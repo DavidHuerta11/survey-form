@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Survey Form</title>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+        <style>
+            * {
+              margin: 0;
+              padding: 0;
+            }
+            body {
+              background-image: url("https://images.unsplash.com/photo-1529939620248-273fd31a7cdf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1044&q=80");
+              background-size: cover; /*fits background to page*/
+              background-attachment: fixed; /*keeps background from scrolling*/
+              font-size: 90%;
+              font-family: "Rubik", sans-serif;
+              color: white;
+            }
+            .layer {
+              /*second semi-transparent layer over the background-image*/
+              background-color: rgba(64, 200, 224, 0.5);
+              position: relative;
+              width: 100%;
+              height: 94em;
+            }
+            #title {
+              font-size: 2.5em;
+              text-align: center;
+              padding-top: 1em;
+              padding-bottom: 0.2em;
+            }
+            #description {
+              font-size: 1.3em;
+              font-weight: 300;
+              text-align: center;
+              margin-bottom: 1em;
+            }
+            #survey-form {
+              /*this is the container for the inputs*/
+              background-color: rgba(14, 62, 70, 0.85);
+              padding-bottom: 4em;
+              padding-right: 3em;
+              padding-left: 3em;
+              border-radius: 0.2em;
+              display: grid;
+              flex-direction: column;
+              max-width: 100%;
+            }
+            label {
+              margin-top: 1.3em;
+              margin-bottom: 0.3em;
+              font-size: 1.3em;
+            }
+            .radio-checkbox-struct {
+              margin-top: 0.4em;
+            }
+            input, select {
+              border-radius: 0.3em;
+              padding-top: 0.4em;
+              padding-bottom: 0.4em;
+              font-size: 1.3em;
+            }
+            textarea {
+              font-size: 1.3em;
+              font-family: "Rubik", sans-serif;
+              border-radius: 0.2em;
+            }
+            small {
+              font-size: 0.7em;
+            }
+            input[type="checkbox"],
+            input[type="radio"] {
+              width: 0.75em;
+              height: 0.75em;
+              background: white;
+              /*below - keeps radio buttons and checkboxes aligned to text*/
+              vertical-align: bottom;
+              position: relative;
+              top: -1px;
+            }
+
+            select:required:invalid {
+              /*Change color of "placeholder" text*/
+              color: #666;
+            }
+            option[value=""][disabled] {
+              display: none;
+            }
+            option {
+              color: #000;
+            }
+            #submit{
+              font-size: 1.3em;
+              margin-top: 1.5em;
+            }
+
+            @media (min-width: 414px) {
+              /*iphone 11*/
+              .layer {
+                height: 93em;
+              }
+            }
+            @media (min-width: 800px) {
+              /*tablets&desktop*/
+              #survey-form {
+                max-width: 50%;
+                margin-left: auto;
+                margin-right: auto;
+              }
+            }
+        </style>
+    </head>
+    <body>
+        <main class="layer">
+            <section>
+                <header>
+                    <h1 id="title">Coronavirus Survey Form</h1>
+                </header>
+                <p id="description">Thank you for taking the time to help us get important data.</p>
+            </section>
+            <section>
+                <form id="survey-form" action="/url-where-you-want-to-submit-form-data">
+                    <label id="name-label" for="name">Name</label>
+                        <input id="name" type="text" placeholder="Enter your name" required>
+                    <label id="email-label" for="email">Email</label>
+                        <input id="email" type="email" placeholder="Enter your Email" required>
+                    <label id="number-label" for="number">Age <small>(optional)</small></label>
+                        <input id="number" type="number" min="8" max="100" placeholder="Age">
+                    <label id="dropdown-label" for="dropdown">Which options best describes your current role?</label>
+
+                    <select id="dropdown" name="dropdown" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="student">Student</option>
+                        <option value="working-from-home">Working from home</option>
+                        <option value="self-employed">Self-employed</option>
+                        <option value="unemployed">Unemployed</option>
+                    </select>
+
+                    <label>Do you know anyone who has or has had COVID-19?</label>
+                    <label class="radio-checkbox-struct">
+                        <input id="yes-known" value="yes-known" name="covidknown" type="radio"> Yes
+                    </label>
+                    <label class="radio-checkbox-struct">
+                        <input id="not-known" value="not-known" name="covidknown" type="radio"> No
+                    </label>
+
+
+                    <label>What supplies would you like more off? <small>(check all that apply)</small></label>
+                    <label class="radio-checkbox-struct">
+                        <input id="item1" name="item1"  value="toilet-paper" type="checkbox"> Toilet paper
+                    </label>
+                    <label class="radio-checkbox-struct">
+                        <input id="item2" name="item2"  value="hand-sanitizer" type="checkbox"> Hand Sanitizer
+                    </label>
+                    <label class="radio-checkbox-struct">
+                        <input id="item3" name="item3"  value="hand-sanitizer" type="checkbox"> Face Masks
+                    </label>
+                    <label class="radio-checkbox-struct">
+                        <input id="item4" name="item4"  value="hand-sanitizer" type="checkbox"> Alcohol
+                    </label>
+                    <label class="radio-checkbox-struct">
+                        <input id="item5" name="item5"  value="hand-sanitizer" type="checkbox"> Medication
+                    </label>
+                    <label class="radio-checkbox-struct">
+                        <input id="item6" name="item6"  value="hand-sanitizer" type="checkbox"> Entertainment
+                    </label>
+                    <label class="radio-checkbox-struct">
+                        <input id="item7" name="item7"  value="hand-sanitizer" type="checkbox"> Food
+                    </label>
+
+
+                    <label for="text-area">How has COVID-19 affected you?</label>
+                        <textarea id="text-area" rows="5" columns="50" placeholder="Enter your comment here..."></textarea>
+
+                    <input id="submit" value="submit" type="submit">
+                </form>
+            </section>
+        </main>
+    </body>
+</html
